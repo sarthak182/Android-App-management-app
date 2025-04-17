@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Python</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <input
+        type="text"
+        class="app-Name"
+        id="appname"
+        placeholder="Enter App-Name"
+      />
+      <input type="text" class="app-Id" id="appid" placeholder="Enter App-Id" />
+      <input
+        type="text"
+        class="app-features"
+        id="appfeatures"
+        placeholder="Enter App-features"
+      />
+      <button class="insertval" onclick="handleClick()">
+        Insert into Table
+      </button>
+    </div>
+    <div>
+      <input
+        type="text"
+        class="deletebyid"
+        id="deleteappid"
+        placeholder="Enter App Id"
+      />
+      <button class="delete-id" onclick="deleteApp()">Delete App</button>
+    </div>
+    <h2>Apps Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Serial No.</th>
+          <th>App Name</th>
+          <th>App ID</th>
+          <th>Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for app in app_data %}
+        <tr>
+          <td>{{ app[0] }}</td>
+          <td>{{ app[1] }}</td>
+          <td>{{ app[2] }}</td>
+          <td>{{ app[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h2>Devices Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Device ID</th>
+          <th>Model</th>
+          <th>OS Version</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dev in device_data %}
+        <tr>
+          <td>{{ dev[0] }}</td>
+          <td>{{ dev[1] }}</td>
+          <td>{{ dev[2] }}</td>
+          <td>{{ dev[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
